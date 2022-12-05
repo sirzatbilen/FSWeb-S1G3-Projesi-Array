@@ -40,9 +40,12 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(orijinalTatlar){
+  let kopyala = orijinalTatlar.slice();
+  return kopyala;
 }
+
+console.log(kopyala(orijinalTatlar));
 
 
 /* Görev 2:
@@ -56,10 +59,17 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(orijinalTatlar){
+  let sonuc;
+if(orijinalTatlar.length === 25){
+   sonuc = true;
+}else{
+  sonuc = false;
 }
 
+return sonuc;
+}
+console.log(dizi25Cesitmi(orijinalTatlar));
 
 /* Görev 3:
 Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
@@ -74,9 +84,11 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(dizi,yeniTad){
+  dizi.unshift(yeniTad);
+  return dizi;
 }
+console.log(cesitEkle(orijinalTatlar, "Kakule"));
 
 
 /* Cörev 4:
@@ -91,10 +103,11 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
    Örneğin: sonCesitiKaldir(orijinalTatlar) çalıştırıldığında ["Kakule", "Muz",..."Çilek"] döndürülür.
 */
 
-
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(dizi){
+  dizi.pop();
+  return dizi;
 }
+console.log( sonCesitiKaldir(orijinalTatlar) );
 
 
 /* Görev 5:
@@ -108,11 +121,11 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(dizi,index){
+  return dizi[index];
 }
-
-
+console.clear();
+console.log(indekstekiCesitiGetir(orijinalTatlar, 2));
 /* Görev 6:
 
 Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, aroma adına göre aromaları kaldırmaları gerektiğini fark ederler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
@@ -128,9 +141,17 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(dizi,lezzet){
+  for(let i=0 ; i<dizi.length ; i++){
+    if (dizi[i]===lezzet){
+      dizi.splice(i,1)
+    }
+
+  }
+  return dizi;
+
 }
+console.log(ismeGoreCesitCikar(orijinalTatlar,'Tarçın '));
 
 
 /* Görev 7:
@@ -153,11 +174,17 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
   Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
 */
 
-
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+console.clear();
+function ismeGoreFiltrele(gelenDizi,filtre){
+  let a =[]
+  for(let i =0; i<gelenDizi.length; i++){
+    if(gelenDizi[i].includes(filtre)){
+      a.push(gelenDizi[i]);
+    }
+  }
+  return a;
 }
-
+console.log(ismeGoreFiltrele(orijinalTatlar,"Çikolata"));
 
 
 /* ALIŞTIRMA */
@@ -171,10 +198,20 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
 
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
-
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+let array = orijinalTatlar;
+function countWords(str){
+  const arr = str.split(" ");
+  return arr.length;
 }
+function ortalamaKelimeSayisi(array){
+  let totalWordCount =0;
+  for(let i=0; i<array.length; i++){
+    totalWordCount = totalWordCount + countWords(array[i]);
+  }
+  return totalWordCount / array.length;
+}
+
+console.log(ortalamaKelimeSayisi(array));
 
 
 /* ALIŞTIRMA 2:
